@@ -30,18 +30,19 @@ getCurrentFormattedTime() {
 }
 
 
-start(element) {
-function checkClock(element) {
+start() {
+let checkClock = (element) => {
     let clock = this.getCurrentFormattedTime();
-    if(clock === element.time) {
-        element.callback();
-    } else if (timerId === null) {
+    if(element.time === clock) {
+      return element.callback();
+    }
+}
+    if (this.timerId === null) {
         this.timerId = setInterval(() => {
             this.alarmCollection.forEach(element => checkClock(element));
         }, 2000);
     }
-    return;
-}    
+    return;   
 }
 
 
